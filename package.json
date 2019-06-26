@@ -1,5 +1,5 @@
 {
-  "name": "hostnamecolor",
+  "name": "hostnameColor",
   "version": "1.0.0",
   "description": "with color based on the given url's hostname",
   "main": "index.js",

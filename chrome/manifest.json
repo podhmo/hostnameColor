@@ -2,6 +2,7 @@
   "content_scripts": [
     {
       "js": [
+        "color-hash.js",
         "contentScript.js"
       ],
       "matches": [
