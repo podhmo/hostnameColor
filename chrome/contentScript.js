@@ -40,7 +40,7 @@ chrome.storage.local.get("config", function(data){
 
   document.querySelector("body").insertAdjacentHTML("afterbegin", `
 <style>
-#ext-message {
+#__hostnameColor--message {
   position: sticky;
   display: inline-block;
   z-index: 2147483647;
@@ -53,9 +53,9 @@ chrome.storage.local.get("config", function(data){
   padding: 10px;
 }
 </style>
-<div id="ext-message">${hostname}</div>
+<div id="__hostnameColor--message">${hostname}</div>
 `);
-  document.querySelector("#ext-message").addEventListener("click", function(ev){
+  document.querySelector("#__hostnameColor--message").addEventListener("click", function(ev){
     ev.currentTarget.remove();
   }, {"once": true});
 });
