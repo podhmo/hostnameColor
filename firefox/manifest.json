@@ -1,0 +1,29 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "color-hash.js",
+        "contentScript.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "description": "with color based on the given url's hostname",
+  "manifest_version": 2,
+  "name": "hostnameColor",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "short_name": "hostnameColor",
+  "version": "0.0.0"
+}
