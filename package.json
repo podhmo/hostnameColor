@@ -1,0 +1,22 @@
+{
+  "name": "hostnamecolor",
+  "version": "1.0.0",
+  "description": "with color based on the given url's hostname",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/podhmo/hostnameColor.git"
+  },
+  "author": "podhmo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/podhmo/hostnameColor/issues"
+  },
+  "homepage": "https://github.com/podhmo/hostnameColor#readme",
+  "dependencies": {
+    "color-hash": "^1.0.3"
+  }
+}
