@@ -40,3 +40,9 @@ on https://gitlab.com
 
 ![on gitlab](./images/01gitlab.png)
 
+
+## enable/disable
+
+Please click extension's icon, the state is toggled.
+
+![on](./images/on.png) ![off](./images/off.png)
