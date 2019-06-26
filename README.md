@@ -1,6 +1,13 @@
 # hostnameColor
 
-With color based on the given url's hostname
+With color based on the given url's hostname.
+
+## install
+
+Sorry, this extension is not published yet. So, install as development version.
+
+- [chrome tutorial](https://developer.chrome.com/extensions/getstarted#manifest)
+- [firefox tutorial](https://developer.mozilla.org/ja/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#Trying_it_out)
 
 ## usecases
 
