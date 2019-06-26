@@ -15,8 +15,15 @@ function describe(config, {hostname, options}){
 }
 
 chrome.storage.local.get("config", function(data){
-  const config = data.config;
   const hostname = window.location.hostname;
+  const config = data.config;
+
+  if (!config.enable) {
+    if (config.debug){
+      console.log("hostnameColor is disabled..");
+    }
+    return;
+  }
 
   const ch = new ColorHash();
 
