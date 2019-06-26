@@ -21,8 +21,8 @@ For example, `production-<app name>.net`, `dev-<app name>.net` , ... and so on. 
 - staging env
 - master env
 - development env
-- <topic branch0> env
-- <topic branch1> env
+- topic branch0 env
+- topic branch1 env
 - ...
 
 Then, accessing each environement's URL with this extension.
