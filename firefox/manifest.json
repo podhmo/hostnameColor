@@ -4,6 +4,9 @@
       "background.js"
     ]
   },
+  "browser_action": {
+    "default_title": "hostnameColor"
+  },
   "content_scripts": [
     {
       "js": [

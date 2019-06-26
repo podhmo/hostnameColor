@@ -14,9 +14,7 @@ function describe(config, {hostname, options}){
   // console.table(options);
 }
 
-(function(){
-  const data = {config: {enable: true, debug: true}};
-
+browser.storage.local.get("config", function(data){
   const hostname = window.location.hostname;
   const config = data.config;
 
@@ -60,5 +58,4 @@ function describe(config, {hostname, options}){
   document.querySelector("#__hostnameColor--message").addEventListener("click", function(ev){
     ev.currentTarget.remove();
   }, {"once": true});
-})();
-
+});
