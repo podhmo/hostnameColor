@@ -38,6 +38,11 @@ chrome.storage.local.get("config", function(data){
     describe(config, {hostname: hostname, options: options});
   }
 
+  // remove, when old elements are exists
+  document.querySelectorAll("#__hostnameColor--message").forEach((e) => {
+    e.remove();
+  });
+
   document.querySelector("body").insertAdjacentHTML("afterbegin", `
 <style>
 #__hostnameColor--message {
