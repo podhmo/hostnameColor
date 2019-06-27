@@ -28,7 +28,7 @@ chrome.browserAction.onClicked.addListener(function (tab){
     const nextEnabled = !config.enable;
 
     updateStatus(config, nextEnabled, function(){
-      chrome.tabs.query({active: true, currentWindow: true}, (tabs) =>{
+      chrome.tabs.query({currentWindow: true}, (tabs) =>{
         const action = nextEnabled ? "activate" : "deactivate"; // xxx:
         tabs.forEach((tab) => {
           chrome.tabs.sendMessage(tab.id, {"action": action});
@@ -37,5 +37,3 @@ chrome.browserAction.onClicked.addListener(function (tab){
     });
   });
 });
-
-
