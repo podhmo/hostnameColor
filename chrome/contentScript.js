@@ -14,17 +14,14 @@ function describe(config, {hostname, options}){
   // console.table(options);
 }
 
-chrome.storage.local.get("config", function(data){
-  const hostname = window.location.hostname;
-  const config = data.config;
+function refresh(){
+  // remove, when old elements are exists
+  document.querySelectorAll("#__hostnameColor--message").forEach((e) => {
+    e.remove();
+  });
+}
 
-  if (!config.enable) {
-    if (config.debug){
-      console.log("hostnameColor is disabled..");
-    }
-    return;
-  }
-
+function getOptions(hostname, config) {
   const ch = new ColorHash();
 
   let options = {HSL: ch.hsl(hostname)};
@@ -37,12 +34,10 @@ chrome.storage.local.get("config", function(data){
   if (config.debug) {
     describe(config, {hostname: hostname, options: options});
   }
+  return options;
+}
 
-  // remove, when old elements are exists
-  document.querySelectorAll("#__hostnameColor--message").forEach((e) => {
-    e.remove();
-  });
-
+function draw(hostname, options){
   document.querySelector("body").insertAdjacentHTML("afterbegin", `
 <style>
 #__hostnameColor--message {
@@ -63,4 +58,40 @@ chrome.storage.local.get("config", function(data){
   document.querySelector("#__hostnameColor--message").addEventListener("click", function(ev){
     ev.currentTarget.remove();
   }, {"once": true});
+}
+
+chrome.runtime.onMessage.addListener(function(request){
+  if(!request.action) {
+    return;
+  }
+  switch (request.action) {
+  case "deactivate":
+    refresh();
+    return;
+  case "activate":
+    const config = {debug: true, enable: true}
+    const hostname = window.location.hostname;
+    const options = getOptions(hostname, config);
+    draw(hostname, options);
+    return;
+  default:
+    console.warn("unexpected action: %s", request.action);
+  }
 });
+
+// main
+chrome.storage.local.get("config", function(data){
+  const config = data.config;
+  if (!config.enable) {
+    if (config.debug){
+      console.log("hostnameColor is disabled..");
+    }
+    return;
+  }
+
+  const hostname = window.location.hostname;
+  const options = getOptions(hostname, config);
+  refresh();
+  draw(hostname, options);
+});
+
