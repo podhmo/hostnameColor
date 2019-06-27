@@ -1,4 +1,6 @@
 // with  https://github.com/zenozeng/color-hash
+let browser = chrome || browser;
+
 const info = new Info();
 const view = new View();
 

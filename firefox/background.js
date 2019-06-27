@@ -1,3 +1,5 @@
+let browser = chrome || browser;
+
 function updateStatus(config, nextEnabled,  callback){
   if (config.debug) {
     console.log(`next -> ${nextEnabled}`);

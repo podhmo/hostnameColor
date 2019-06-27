@@ -1,8 +1,10 @@
 // with  https://github.com/zenozeng/color-hash
+let browser = chrome || browser;
+
 const info = new Info();
 const view = new View();
 
-chrome.runtime.onMessage.addListener((request) =>{
+browser.runtime.onMessage.addListener((request) =>{
   if(!request.action) {
     return;
   }
@@ -11,7 +13,7 @@ chrome.runtime.onMessage.addListener((request) =>{
     view.refresh();
     break;
   case "activate":
-    chrome.storage.local.get("config", ({config}) =>{
+    browser.storage.local.get("config", ({config}) =>{
       const {hostname, options} = info.extract(window.location.hostname, config);
       view.draw(hostname, options);
       return;
@@ -23,7 +25,7 @@ chrome.runtime.onMessage.addListener((request) =>{
 });
 
 // main
-chrome.storage.local.get("config", ({config}) =>{
+browser.storage.local.get("config", ({config}) =>{
   if (!config.enable) {
     if (config.debug){
       console.log("hostnameColor is disabled..");
