@@ -11,6 +11,7 @@
     {
       "js": [
         "color-hash.js",
+        "view-objects.js",
         "contentScript.js"
       ],
       "matches": [
@@ -25,7 +26,8 @@
   "name": "hostnameColor",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
   "short_name": "hostnameColor",
   "version": "0.0.0"
