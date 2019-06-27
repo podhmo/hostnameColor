@@ -12,6 +12,7 @@
     {
       "js": [
         "color-hash.js",
+        "view-objects.js",
         "contentScript.js"
       ],
       "matches": [
