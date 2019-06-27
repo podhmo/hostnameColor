@@ -1,0 +1,17 @@
+diff -ur chrome/manifest.json firefox/manifest.json
+--- chrome/manifest.json	2019-06-28 08:21:07.972869344 +0900
++++ firefox/manifest.json	2019-06-28 08:21:48.133052072 +0900
+@@ -1,12 +1,11 @@
+ {
+   "background": {
+-    "persistent": false,
+     "scripts": [
+       "background.js"
+     ]
+   },
+   "browser_action": {
+-    "defaultTitle": "hostnameColor"
++    "default_title": "hostnameColor"
+   },
+   "content_scripts": [
+     {
