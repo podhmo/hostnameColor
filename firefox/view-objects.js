@@ -42,7 +42,7 @@ class View {
     document.querySelector("body").insertAdjacentHTML("afterbegin", `
 <style>
 #__hostnameColor--message {
-  position: sticky;
+  position: fixed;
   display: inline-block;
   z-index: 2147483647;
   top: 10px;
