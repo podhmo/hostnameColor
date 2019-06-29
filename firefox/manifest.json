@@ -22,6 +22,12 @@
     }
   ],
   "description": "with color based on the given url's hostname",
+  "icons": {
+    "128": "images/logo-128.png",
+    "16": "images/logo-16.png",
+    "32": "images/logo-32.png",
+    "48": "images/logo-48.png"
+  },
   "manifest_version": 2,
   "name": "hostnameColor",
   "permissions": [
