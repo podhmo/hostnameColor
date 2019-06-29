@@ -16,7 +16,7 @@ function updateStatus(config, nextEnabled,  callback){
 }
 
 browser.runtime.onInstalled.addListener(function() {
-  const config  = {debug: true, enable: true};
+  const config  = {debug: false, enable: true};
   browser.storage.local.set({config: config}, function() {
     console.log(`config set ${config}`);
     const nextEnabled = config.enable;
