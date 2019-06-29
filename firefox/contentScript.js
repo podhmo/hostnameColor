@@ -4,6 +4,15 @@ let browser = chrome || browser;
 const info = new Info();
 const view = new View();
 
+function getHostname(){
+  const hostname = window.location.hostname;
+  const port = window.location.port;
+  if (port === "") {
+    return hostname;
+  }
+  return `${hostname}:${port}`;
+}
+
 browser.runtime.onMessage.addListener((request) =>{
   if(!request.action) {
     return;
@@ -14,7 +23,7 @@ browser.runtime.onMessage.addListener((request) =>{
     break;
   case "activate":
     browser.storage.local.get("config", ({config}) =>{
-      const {hostname, options} = info.extract(window.location.hostname, config);
+      const {hostname, options} = info.extract(getHostname(), config);
       view.draw(hostname, options);
       return;
     })
@@ -33,7 +42,7 @@ browser.storage.local.get("config", ({config}) =>{
     return;
   }
 
-  const {hostname, options} = info.extract(window.location.hostname, config);
+  const {hostname, options} = info.extract(getHostname(), config);
 
   view.refresh();
   view.draw(hostname, options);
