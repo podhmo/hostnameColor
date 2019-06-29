@@ -30,12 +30,40 @@ browser.browserAction.onClicked.addListener(function (tab){
     const nextEnabled = !config.enable;
 
     updateStatus(config, nextEnabled, function(){
+      if (nextEnabled) {
+        browser.tabs.query({currentWindow: true, active: true}, (tabs) =>{
+          tabs.forEach((tab) => {
+            browser.tabs.sendMessage(tab.id, {"action": "moved"});
+          });
+        });
+      } else {
+	      browser.theme.update({});
+      }
+
       browser.tabs.query({currentWindow: true}, (tabs) =>{
-        const action = nextEnabled ? "activate" : "deactivate"; // xxx:
+        const action = nextEnabled ? "enabled" : "disabled"; // xxx:
         tabs.forEach((tab) => {
           browser.tabs.sendMessage(tab.id, {"action": action});
         });
       });
     });
   });
+});
+
+browser.tabs.onUpdated.addListener((tabId) => {
+  browser.tabs.sendMessage(tabId, {"action": "moved"});
+});
+
+browser.runtime.onMessage.addListener(async (request) =>{
+  if (!request.action || request.action !== "after-extract") {
+    return ;
+  }
+
+  const theme = {
+    colors: {
+      bookmark_text: request.options.fgColor,
+      toolbar: request.options.bgColor
+    }
+  }
+	browser.theme.update(theme);
 });
