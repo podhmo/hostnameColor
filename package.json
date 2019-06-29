@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/podhmo/hostnameColor#readme",
   "dependencies": {
-    "color-hash": "^1.0.3"
+    "@hugojosefson/color-hash": "^2.0.3"
   }
 }
